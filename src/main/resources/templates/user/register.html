@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>注册</title>
+    <link type="text/css" rel="stylesheet" href="/user/css/register.css">
+
+    <script type="text/javascript" src="/user/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/user/css/vali.min.js"></script>
+</head>
+<body>
+<div class="body">
+    <div class="vli">
+        <div class="wrapper move">
+            <div id="register">
+                <form th:action ="@{/user/registerSucess}" method="post" enctype="multipart/form-data">
+                    <h3>免费注册</h3>
+                    <div class="vali">
+                        <input type="text" name="username" value="" class="uersname" placeholder="请输入用户名">
+                    </div>
+                    <div class="vali">
+                        <input type="text" name="nickname" value="" placeholder="请输入昵称" class="nicheng">
+                    </div>
+                    <div class="vali">
+                        <input type="text" name="phone" value="" placeholder="请输入11位手机号" class="phone">
+                    </div>
+                    <div class="marb0">
+                        <div class="cl1"></div>
+                    </div>
+                    <div class="vali">
+                        <input type="text" name="address" value="" placeholder="请填写你的地址信息" class="pasw">
+                    </div>
+                    <div class="vali">
+                        <input type="password" name="password" value="" placeholder="请填写长度为6-20个字符的密码" class="pasw">
+                    </div>
+                    <div class="vali">
+                        <input type="password" name="repassword" value="" placeholder="请再次输入密码" id="password" class="pasws">
+                    </div>
+                    <div class="vali">
+                        <input type="text" name="email" value="" class="eal" placeholder="请输入邮箱,邮箱格式,123@qq.com">
+                    </div>
+                    <div class="submit">
+                        <input type="submit" class="btn" value="立即注册">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

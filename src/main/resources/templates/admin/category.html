@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>发布管理</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+    <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div th:replace="common/nav :: mynav"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!--<div class="col-sm-3 col-md-2 sidebar">-->
+            <!--<ul class="nav nav-sidebar" style="margin-top: 80px">-->
+                <!--<li><a href="#">发布管理</a></li>-->
+                <!--<li><a href="">用户管理</a></li>-->
+                <!--<li><a href="">平台信息</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <div th:replace="common/sider :: mysider"></div>
+
+
+            <h2 class="sub-header">商品种类页面</h2>
+            <div class="table-responsive">
+                <form th:action="@{/admin/toAddCategories}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <td><input type="text" placeholder="请输入要添加的商品种类名称" name="cateName"></td>
+                        <td><input type="file" placeholder="添加商品图片" name="file"></td>
+                        <td><button class="btn btn-sm btn-success"  type="submit">添加商品种类</button></td>
+                    </tr>
+                </table>
+                </form>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>CateId</th>
+                        <th>商品种类种类(添加商品)</th>
+                        <th>商品图片</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="category:${categories}">
+                        <td th:text="${category.cateid}"></td>
+                        <td><a th:text="${category.catename}" th:href="@{/admin/toAddProduct(cateid=${category.cateid})}"></a></td>
+                        <td><img th:src="'/images/'+${category.image}" style="width: 45px;height: 50px"></td>
+                        <td><a th:href="@{/admin/deleteCategory(cateid=${category.cateid})}"><button class="btn btn-danger btn-sm">删除</button></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="../../assets/js/vendor/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+</body>
+</html>

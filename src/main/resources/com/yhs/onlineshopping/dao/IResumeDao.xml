@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace：命名空间，用于隔离sql，还有一个很重要的作用，后面会讲 -->
+<mapper namespace="com.yhs.onlineshopping.dao.IResumeDao">
+
+<!--投递简历-->
+	<insert id="toWorkVote" parameterType="com.yhs.onlineshopping.pojo.Resume">
+		insert into 52city.resume (username,phone,address,resume,pid,cateid,price,image,pname,uid)
+		values (#{username},#{phone},#{address},#{resume},#{pid},#{cateid},#{price},#{image},#{pname},#{uid})
+	</insert>
+<!--查询用户投递简历情况-->
+	<select id="toFindResumesByUid" parameterType="int" resultType="com.yhs.onlineshopping.pojo.Resume">
+		select * from 52city.resume where uid = #{uid};
+	</select>
+<!--管理员查询投递简历-->
+	<select id="toDisplayResumes" resultType="com.yhs.onlineshopping.pojo.Resume">
+		select * from 52city.resume;
+	</select>
+</mapper>

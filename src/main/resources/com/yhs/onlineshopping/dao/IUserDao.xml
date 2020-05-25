@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql，还有一个很重要的作用，后面会讲 -->
+<mapper namespace="com.yhs.onlineshopping.dao.IUserDao">
+
+	<!-- 验证用户存在性 -->
+	<select id="doLogin" parameterType="com.yhs.onlineshopping.pojo.User" resultType="integer">
+		select user.uid from 52city.user where username=#{username} and password = #{password};
+	</select>
+<!--用户注册-->
+	<insert id="registerUser" parameterType="com.yhs.onlineshopping.pojo.User">
+		insert into 52city.user(username,password,phone,address,email)
+    	values (#{username},#{password},#{phone},#{address},#{email});
+	</insert>
+<!--根据用户名称查询用户ID-->
+	<select id="toFindUidByName" parameterType="String" resultType="com.yhs.onlineshopping.pojo.User">
+		select * from 52city.user where username = #{username};
+	</select>
+	<!--根据UID获取用户信息-->
+	<select id="toFindUserById" parameterType="int" resultType="com.yhs.onlineshopping.pojo.User">
+		select * from 52city.user where uid = #{uid};
+	</select>
+<!--修改地址-->
+	<update id="toAlterAddressById" parameterType="com.yhs.onlineshopping.pojo.User">
+		update 52city.user set address = #{address}
+		where uid = #{uid};
+	</update>
+	<!--修改地址-->
+	<update id="toAlterPasswordById" parameterType="com.yhs.onlineshopping.pojo.User">
+		update 52city.user set password = #{password}
+		where uid = #{uid};
+	</update>
+	<!--删除地址-->
+	<update id="toDeleteAddressById" parameterType="com.yhs.onlineshopping.pojo.User">
+		update 52city.user set address = #{address}
+		where uid = #{uid};
+	</update>
+</mapper>

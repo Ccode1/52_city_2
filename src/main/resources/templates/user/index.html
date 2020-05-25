@@ -1,0 +1,313 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<!-- source http://www.scnoob.com More templates http://www.scnoob.com/moban -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>电商用户平台</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/user/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/user/img/icon.png">
+
+    <!-- Google font (font-family: 'Carrois Gothic', sans-serif;) -->
+    <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic" rel="stylesheet">
+    <!-- Google font (font-family: 'Open Sans', sans-serif;) -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="/user/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/user/css/plugins.css">
+
+    <!-- Style Css -->
+    <link rel="stylesheet" href="/user/css/style.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/user/css/custom.css">
+</head>
+
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+
+<!-- Wrapper -->
+<div id="wrapper" class="wrapper">
+
+    <!-- Header -->
+    <header class="header sticky-header">
+
+        <!-- Header Top Area -->
+        <div class="header-top-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <form action="#" class="header-top-left">
+                            <!-- <div class="language-selection">
+                                <label for="language-selection">Language:</label>
+
+                            </div> -->
+
+                        </form>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <ul class="header-top-right">
+                            <li><a th:href="@{/user/myAccount}">个人中心</a></li>
+                            <li><a th:href="@{/user/toSingOut}">注销</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Header Top Area -->
+
+        <!-- Header Middle Area -->
+        <div class="header-middle-area cr-border cr-border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-12">
+                        <form class="header-search" th:action="@{/user/toFindProductsByKeyWords}" method="post">
+                            <select name="cateId">
+                                <option  value="1">跳蚤市场</option>
+                                <option  value="2">招聘</option>
+                                <option  value="3">汽车服务</option>
+                                <option  value="4">宠物</option>
+                                <option  value="5">房产</option>
+                                <option  value="6">家政服务</option>
+                                <option  value="7">装修建材</option>
+                                <option  value="8">商业服务</option>
+                                <option  value="9">二手车</option>
+                            </select>
+                            <input type="text" placeholder="搜索你感兴趣的" name="name">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-7 col-12">
+                        <div class="header-logo">
+                            <a href="index.html">
+                                <img src="/user/img/logo/logo-1.png" alt="logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-5 col-12">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+</div>
+</div>
+<!--// Header Middle Area -->
+
+<!-- Header Bottom Area -->
+<div class="header-bottom-area d-none d-lg-block">
+    <div class="container">
+        <div class="header-bottom-inner">
+            <nav class="sn-navigation">
+                <ul>
+                    <li><a th:href="@{/user/reIndex}">主页</a>
+                    </li>
+                    <li><a th:href="@{/user/toDisplayProductsByCateid}">跳蚤市场</a>
+                    </li>
+                    <li><a th:href="@{/user/toDisplayCates}">服务种类</a>
+                    </li>
+                    <li><a th:href="@{/user/FindProductsBycateId}">求职</a>
+                    </li>
+                    <li class="megamenu-active"><a th:href="@{/user/toDisplayCarService}">汽车服务</a>
+                    </li>
+                    <li class="megamenu-active"><a th:href="@{/user/toDisplayShoppingCar}">我的服务清单</a>
+                    </li>
+                    <li class="megamenu-active"><a th:href="@{/user/toPublish}">免费发布</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-bottom-social">
+            </div>
+        </div>
+    </div>
+</div>
+<!--// Header Bottom Area -->
+
+<!-- Header Mobile Menu -->
+<div class="mobile-menu-area d-block d-lg-none">
+    <div class="container">
+        <div class="mobile-menu clearfix">
+            <div class="header-bottom-social">
+                <span>Follow Us On:</span>
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--// Header Mobile Menu -->
+
+</header>
+<!--// Header -->
+
+<!-- Hero Area -->
+<div class="hero-area slider-navigation-1">
+
+    <div class="single-hero-item d-flex align-items-center"style="background-image: url(/user/img/hero-image/index.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-8 col-md-9 offset-xl-1 offset-0">
+                    <div class="hero-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="single-hero-item d-flex align-items-center"style="background-image: url(/user/img/hero-image/index2.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-8 col-md-9 offset-xl-1 offset-0">
+                    <div class="hero-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--// Hero Area -->
+
+<!-- Page Conttent -->
+<main class="page-content">
+    <!-- Features Area -->
+    <div class="features-area">
+        <div class="container">
+            <div class="row justify-content-center features-wrapper">
+
+                <!-- Single Features -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="features text-center">
+                        <h6>特价销售</h6>
+                        <p>特价电商营销凭借强大的用户产品优势，每天数十亿次搜索请求,以超低的价格俘虏人心,用心做买卖。 </p>
+                    </div>
+                </div>
+                <!--// Single Features -->
+
+                <!-- Single Features -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="features text-center">
+                        <h6>大流量</h6>
+                        <p>超过1亿用户浏览信息流、800亿次定位服务请求，为客户提供全系列产品广告资源覆盖用户生活全场景。</p>
+                    </div>
+                </div>
+                <!--// Single Features -->
+
+                <!-- Single Features -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="features text-center">
+                        <h6>品质保证</h6>
+                        <p>长期在我们平台购物的老客户都知道,我们客服人美声甜,商品品质有保障，是你居家旅行必逛的品质生活源地。</p>
+                    </div>
+                </div>
+                <!--// Single Features -->
+
+            </div>
+        </div>
+    </div>
+    <!--// Features Area -->
+
+    <!-- Newsletter & Brand Logos Area -->
+    <div class="newsletter-brandlogo-area section-padding-xs">
+        <div class="container">
+            <div class="row no-gutters align-items-center">
+
+                <!-- Newsletter -->
+                <div class="col-lg-4">
+                    <div class="newsletterbox">
+                        <h5>SIGN UP FOR OUR WEEKLY NEWSLETTER !</h5>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                <!--// Newsletter -->
+
+                <!-- Brand Logo -->
+                <div class="col-lg-8">
+                    <div class="brand-logos slider-navigation-2">
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-1.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-2.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-3.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-4.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-2.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-3.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--// Brand Logo -->
+
+            </div>
+        </div>
+    </div>
+    <!--// Newsletter & Brand Logos Area -->
+
+</main>
+<!--// Page Conttent -->
+
+<!-- Footer Area -->
+<footer class="footer-area bg-black section-padding-sm">
+
+    <!-- Footer Top Area -->
+    <div class="footer-top-area">
+        <div class="container">
+            <div class="row widgets footer-widgets">
+            </div>
+        </div>
+    </div>
+    <!--// Footer Top Area -->
+</footer>
+<!--// Footer Area -->
+<!--// Wrapper -->
+
+<!-- Js Files -->
+<script src="/user/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="/user/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="/user/js/popper.min.js"></script>
+<script src="/user/js/bootstrap.min.js"></script>
+<script src="/user/js/plugins.js"></script>
+<script src="/user/js/main.js"></script>
+</body>
+
+
+<!-- source http://www.scnoob.com More templates http://www.scnoob.com/moban -->
+</html>

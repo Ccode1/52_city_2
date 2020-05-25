@@ -1,0 +1,459 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- source http://www.scnoob.com More templates http://www.scnoob.com/moban -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>精品商品推荐</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/user/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/user/img/icon.png">
+
+    <!-- Google font (font-family: 'Carrois Gothic', sans-serif;) -->
+    <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic" rel="stylesheet">
+    <!-- Google font (font-family: 'Open Sans', sans-serif;) -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="/user/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/user/css/plugins.css">
+
+    <!-- Style Css -->
+    <link rel="stylesheet" href="/user/css/style.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/user/css/custom.css">
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+
+<!-- Wrapper -->
+<div id="wrapper" class="wrapper">
+
+    <!-- Header -->
+    <!-- Header -->
+    <header class="header sticky-header">
+
+        <!-- Header Top Area -->
+        <div class="header-top-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <form action="#" class="header-top-left">
+                        </form>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <ul class="header-top-right">
+                            <li><a th:href="@{/user/myAccount}">个人中心</a></li>
+                            <li><a th:href="@{/user/toSingOut}">注销</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Header Top Area -->
+
+        <!-- Header Middle Area -->
+        <div class="header-middle-area cr-border cr-border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-12">
+                        <form class="header-search" th:action="@{/user/toFindProductsByKeyWords}" method="post">
+                            <select name="cateId">
+                                <option  value="1">跳蚤市场</option>
+                                <option  value="2">招聘</option>
+                                <option  value="3">汽车服务</option>
+                                <option  value="4">宠物</option>
+                                <option  value="5">房产</option>
+                                <option  value="6">家政服务</option>
+                                <option  value="7">装修建材</option>
+                                <option  value="8">商业服务</option>
+                                <option  value="9">二手车</option>
+                            </select>
+                            <input type="text" placeholder="搜索你感兴趣的" name="name">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-7 col-12">
+                        <div class="header-logo">
+                            <a href="index.html">
+                                <img src="/user/img/logo/logo-1.png" alt="logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-5 col-12">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+</div>
+</div>
+<!-- Header Bottom Area -->
+<div class="header-bottom-area d-none d-lg-block">
+    <div class="container">
+        <div class="header-bottom-inner">
+            <nav class="sn-navigation">
+                <ul>
+                    <li><a th:href="@{/user/reIndex}">主页</a>
+                    </li>
+                    <li><a th:href="@{/user/toDisplayProductsByCateid}">跳蚤市场</a>
+                    </li>
+                    <li><a th:href="@{/user/toDisplayCates}">服务种类</a>
+                    </li>
+                    <li><a th:href="@{/user/FindProductsBycateId}">求职</a>
+                    </li>
+                    <li class="megamenu-active"><a th:href="@{/user/toDisplayCarService}">汽车服务</a>
+                    </li>
+                    <li class="megamenu-active"><a th:href="@{/user/toDisplayShoppingCar}">我的服务清单</a>
+                    </li>
+                    <li class="megamenu-active"><a th:href="@{/user/toPublish}">免费发布</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-bottom-social">
+            </div>
+        </div>
+    </div>
+</div>
+<!--// Header Bottom Area -->
+
+<!-- Header Mobile Menu -->
+<div class="mobile-menu-area d-block d-lg-none">
+    <div class="container">
+        <div class="mobile-menu clearfix">
+            <div class="header-bottom-social">
+                <span>Follow Us On:</span>
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--// Header Mobile Menu -->
+
+</header>
+<!--// Header -->
+
+<!-- Bradcrumb Area -->
+<div class="sn-breadcrumb-are bg-theme section-padding-xs">
+    <div class="container">
+        <div class="sn-breadcrumb text-center">
+            <h3>MY ACCOUNT</h3>
+        </div>
+    </div>
+</div>
+<!--// Bradcrumb Area -->
+
+    <!-- Page Conttent -->
+    <main class="page-content">
+
+        <!-- Account Page Area -->
+        <div class="account-page-area section-padding-md">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3">
+                        <ul class="nav myaccount-tab-trigger" id="account-page-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="account-dashboard-tab" data-toggle="tab" href="#account-dashboard" role="tab" aria-controls="account-dashboard" aria-selected="true">简介</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="account-orders-tab" data-toggle="tab" href="#account-orders" role="tab" aria-controls="account-orders" aria-selected="false">我的订单详情</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="account-resume-tab" data-toggle="tab" href="#account-resume" role="tab" aria-controls="account-resume" aria-selected="false">投递简历详情</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="account-address-tab" data-toggle="tab" href="#account-address" role="tab" aria-controls="account-address" aria-selected="false">地址</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="account-details-tab" data-toggle="tab" href="#account-details" role="tab" aria-controls="account-details" aria-selected="false">账户详情</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="account-logout-tab"  th:href="@{/user/toSingOut}" role="tab"  aria-selected="false">退出</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-9">
+                        <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
+                            <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel" aria-labelledby="account-dashboard-tab">
+                                <div class="myaccount-dashboard">
+                                    <p>Hello <b>老铁</b>
+                                    <p>
+                                        从您的帐户仪表板，您可以查看您最近的订单，管理您的送货和帐单地址,查看您发出的简历.
+                                    <a href="#">并编辑您的密码和帐户详细信息。</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="account-orders" role="tabpanel" aria-labelledby="account-orders-tab">
+                                <div class="myaccount-orders">
+                                    <h4 class="small-title">MY ORDERS</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover">
+                                            <tbody>
+                                            <tr>
+                                                <th>订单号</th>
+                                                <th>商品名称</th>
+                                                <th>商品图片</th>
+                                                <th>商品价格</th>
+                                                <th>数量</th>
+                                                <th>地址</th>
+                                                <th>电话</th>
+                                                <th>状态</th>
+                                                <th></th>
+                                            </tr>
+                                            <tr th:each="order:${orders}">
+                                                <td><a class="account-order-id" href="#" th:text="${order.oid}"></a></td>
+                                                <td th:text="${order.name}"></td>
+                                                <td><img th:src="'/images/'+ ${order.image}" style="width: 45px;height: 50px"></td>
+                                                <td th:text="${order.price}"></td>
+                                                <td th:text="${order.count}"></td>
+                                                <td th:text="${order.address}"></td>
+                                                <td th:text="${order.phone}"></td>
+                                                <td><a th:text="${order.state}==0?'配送中':'已完成'"><span>View</span></a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="account-resume" role="tabpanel" aria-labelledby="account-resume-tab">
+                                <div class="myaccount-orders">
+                                    <h4 class="small-title">MY RESUME</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover">
+                                            <tbody>
+                                            <tr>
+                                                <th>姓名</th>
+                                                <th>地址</th>
+                                                <th>手机</th>
+                                                <th>投递职位</th>
+                                                <th>月工资</th>
+                                                <th>简历</th>
+                                                <th></th>
+                                            </tr>
+                                            <tr th:each="resume:${resumes}">
+                                                <td><a class="account-order-id" href="#" th:text="${resume.username}"></a></td>
+                                                <td th:text="${resume.address}"></td>
+                                                <td th:text="${resume.phone}"></td>
+                                                <td th:text="${resume.pname}"></td>
+                                                <td><span>
+                                                    <a th:text="${resume.price}"></a>
+                                                    <a>--</a>
+                                                    <a th:text="${resume.price}+5000"></a>
+                                                    <a>RMB</a>
+                                                </span></td>
+                                                <td><a th:href="@{/user/fileDownload(filepath=${resume.resume})}" th:text="${resume.resume}"></a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="account-address" role="tabpanel" aria-labelledby="account-address-tab">
+                                <div class="myaccount-address">
+                                    <p>如无需要,默认配送当前地址,否则请修改当前地址</p>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h4 class="small-title">当前地址</h4>
+                                            <address th:text="${user.address}">
+                                            </address>
+                                        </div>
+                                        <form th:action="@{/user/toAlterAddress(uid = ${user.uid})}" method="post">
+                                        <div class="col">
+                                            <h4 class="small-title">修改地址</h4>
+                                            <address>
+                                                <input type="text" placeholder="请输入修改后的地址" name="address"/>
+                                            </address>
+                                                <input type="submit" value="提交"/>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="account-details" role="tabpanel" aria-labelledby="account-details-tab">
+                                <div class="myaccount-details">
+                                    <form th:action="@{/user/toAlterUserPassword(uid=${user.uid})}" class="sn-form">
+                                        <div class="sn-form-inner">
+                                            <div class="single-input single-input-half">
+                                                <label for="account-details-firstname">姓名</label>
+                                                <a  id="account-details-firstname" th:text="${user.username}"></a>
+                                            </div>
+                                            <div class="single-input single-input-half">
+                                                <label for="account-details-lastname">电话</label>
+                                                <a id="account-details-lastname" th:text="${user.phone}"></a>
+                                            </div>
+                                            <div class="single-input">
+                                                <label for="account-details-email">Email*</label>
+                                                <a type="email" id="account-details-email" th:text="${user.email}"></a>
+                                            </div>
+                                            <div class="single-input">
+                                                <label for="account-details-oldpass">当前密码</label>
+                                                <input type="password" id="account-details-oldpass" th:value="${user.password}">
+                                            </div>
+                                            <div class="single-input">
+                                                <label for="account-details-newpass">新密码</label>
+                                                <input type="password" id="account-details-newpass" placeholder="请输入新密码" name="newPassword">
+                                            </div>
+                                            <div class="single-input">
+                                                <label for="account-details-confpass">确认密码</label>
+                                                <input type="password" id="account-details-confpass">
+                                            </div>
+                                            <div class="single-input">
+                                                <button class="sn-button sn-button-dark" type="submit"><span>保存修改</span></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Account Page Area -->
+
+    </main>
+    <!--// Page Conttent -->
+
+
+<!-- Footer Area -->
+<footer class="footer-area bg-black section-padding-sm">
+
+    <!-- Footer Top Area -->
+    <div class="footer-top-area">
+        <div class="container">
+            <div class="row widgets footer-widgets">
+
+                <!-- Single Widget -->
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-widget widget-quicklinks">
+                        <h6 class="widget-title">INFOMATION</h6>
+                        <ul>
+                            <li><a href="#">Our Blog</a></li>
+                            <li><a href="#">About Our Shop</a></li>
+                            <li><a href="#">Secure Shopping</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Delivery infomation</a></li>
+                            <li><a href="#">Advanced Search</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--// Single Widget -->
+
+                <!-- Single Widget -->
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-widget widget-quicklinks">
+                        <h6 class="widget-title">OUR SERVICES</h6>
+                        <ul>
+                            <li><a href="#">Order History</a></li>
+                            <li><a href="#">Shipping & Returns</a></li>
+                            <li><a href="#">Secure Shopping</a></li>
+                            <li><a href="#">International Shipping</a></li>
+                            <li><a href="#">Affiliates</a></li>
+                            <li><a href="#">Returns</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--// Single Widget -->
+
+                <!-- Single Widget -->
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-widget widget-quicklinks">
+                        <h6 class="widget-title">OUR SUPPORT</h6>
+                        <ul>
+                            <li><a href="my-account.html">My Account</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Sample Page</a></li>
+                            <li><a href="#">My address</a></li>
+                            <li><a href="#">My credit slips</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--// Single Widget -->
+
+                <!-- Single Widget -->
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-widget widget-contact">
+                        <h6 class="widget-title">CONTACT US</h6>
+                        <ul>
+                            <li class="location">
+                                <i class="fa fa-map-marker"></i>
+                                <p>1234 Heaven Stress, Beverly Hill OldYork UnitedState of Lorem</p>
+                            </li>
+                            <li class="phone">
+                                <i class="fa fa-mobile"></i>
+                                <a href="tel:+80001234567890">(800) 0123 4567 890</a>
+                                <a href="tel:+80009876543210">(800) 0987 6543 210</a>
+                            </li>
+                            <li class="mail">
+                                <i class="fa fa-envelope-o"></i>
+                                <a href="mailto://info1@example.com">info1@example.com</a>
+                                <a href="mailto://info2@example.com">info2@example.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--// Single Widget -->
+
+            </div>
+        </div>
+    </div>
+    <!--// Footer Top Area -->
+
+    <!-- Footer Copyright Area -->
+    <div class="footer-copyright-area section-padding-top-xs">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-9">
+                    <p class="footer-copyright">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Copyright © 2018 HasTech. All Rights Reserved More Templates <a href="http://www.scnoob.com">菜鸟素材</a> - Collect from <a href="http://www.scnoob.com/moban">网页模板</a></p>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-social-links">
+                        <ul>
+                            <li><a data-toggle="tooltip" title="Facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a data-toggle="tooltip" title="Twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a data-toggle="tooltip" title="Tumblr" href="#"><i class="fa fa-tumblr"></i></a></li>
+                            <li><a data-toggle="tooltip" title="Google Plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a data-toggle="tooltip" title="Dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// Footer Copyright Area -->
+</footer>
+<!--// Footer Area -->
+</div>
+<!--// Wrapper -->
+
+
+<!-- Js Files -->
+<script src="/user/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="/user/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="/user/js/popper.min.js"></script>
+<script src="/user/js/bootstrap.min.js"></script>
+<script src="/user/js/plugins.js"></script>
+<script src="/user/js/main.js"></script>
+</body>
+
+
+<!-- source http://www.scnoob.com More templates http://www.scnoob.com/moban -->

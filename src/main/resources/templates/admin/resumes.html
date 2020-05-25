@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>发布者用户管理</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+    <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div th:replace="common/nav :: mynav"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!--<div class="col-sm-3 col-md-2 sidebar">-->
+            <!--<ul class="nav nav-sidebar" style="margin-top: 80px">-->
+                <!--<li><a href="#">发布管理</a></li>-->
+                <!--<li><a href="">用户管理</a></li>-->
+                <!--<li><a href="">平台信息</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <div th:replace="common/sider :: mysider"></div>
+
+
+            <h2 class="sub-header">简历管理页面</h2>
+            <div class="table-responsive">
+                <h3>简历查看</h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr >
+                        <th>用户名</th>
+                        <th>电话</th>
+                        <th>地址</th>
+                        <th>职位名称</th>
+                        <th>月工资</th>
+                        <th>简历</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    <tr th:each="resume:${resumes}">
+                        <td th:text="${resume.username}"></td>
+                        <td th:text="${resume.phone}"></td>
+                        <td th:text="${resume.address}"></td>
+                        <td th:text="${resume.pname}"></td>
+                        <td> <span>
+                            <a th:text="${resume.price}"></a>
+                            <a>--</a>
+                            <a th:text="${resume.price}+5000"></a>
+                            <a>RMB</a>
+                        </span></td>
+                        <td><a th:href="@{/user/fileDownload(filepath=${resume.resume})}" th:text="${resume.resume}"></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="../../assets/js/vendor/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+</body>
+</html>

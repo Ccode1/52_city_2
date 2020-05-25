@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace：命名空间，用于隔离sql，还有一个很重要的作用，后面会讲 -->
+<mapper namespace="com.yhs.onlineshopping.dao.IOrderDao">
+	<!--查询所有商品订单-->
+	<select id="toFindAllOrders" resultType="com.yhs.onlineshopping.pojo.Order">
+    	select * from shop.order;
+    </select>
+<!--根据订单ID删除订单-->
+	<delete id="toDeleteOrderById" parameterType="int">
+		delete from 52city.order where oid = #{oid};
+	</delete>
+	<!--根据Oid查询商品订单-->
+	<select id="toFindOrderById" resultType="com.yhs.onlineshopping.pojo.Order" parameterType="int">
+    	select * from 52city.order where oid = #{oid};
+    </select>
+<!--修改商品订单信息-->
+	<update id="toAlterOrderById" parameterType="com.yhs.onlineshopping.pojo.Order">
+		update 52city.order
+		set name = #{name}, address = #{address},phone = #{phone},count = #{count},price= #{price}
+		where oid = #{oid};
+	</update>
+<!--添加订单-->
+	<insert id="toAddOrder" parameterType="com.yhs.onlineshopping.pojo.Order">
+		insert into 52city.order (uid,name,image,price,count,address,phone)
+		values (#{uid},#{name},#{image},#{price},#{count},#{address},#{phone})
+	</insert>
+<!--查询用户订单-->
+	<select id="toFindOrdersByUid" parameterType="int" resultType="com.yhs.onlineshopping.pojo.Order">
+		select * from 52city.order where uid = #{uid};
+	</select>
+</mapper>

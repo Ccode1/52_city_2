@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>发布管理</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+    <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div th:replace="common/nav :: mynav"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!--<div class="col-sm-3 col-md-2 sidebar">-->
+        <!--<ul class="nav nav-sidebar" style="margin-top: 80px">-->
+        <!--<li><a href="#">发布管理</a></li>-->
+        <!--<li><a href="">用户管理</a></li>-->
+        <!--<li><a href="">平台信息</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <div th:replace="common/sider :: mysider"></div>
+        <h2 class="sub-header">ALTER PRODUCT</h2>
+        <div class="table-responsive">
+            <form th:action="@{/admin/toAlterPrdouctSuccess(pid=${product.pid})}" method="post">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>商品ID</th>
+                    <th>种类标识</th>
+                    <th>商品名称</th>
+                    <th>样本图</th>
+                    <th>售价</th>
+                    <th>销量</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${product.pid}"></td>
+                    <td th:text="${product.cateid}"></td>
+                    <td><input type="text" th:placeholder="${product.name}" name="name" th:value="${product.name}"></td>
+                    <td><img th:src="'/images/'+${product.image}" width="40px" height="40px"></td>
+                    <td><input type="text" th:placeholder="${product.price}" name="price" th:value="${product.price}"></td>
+                    <td th:text="${product.salesCount}"></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" type="submit">修改</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="../../assets/js/vendor/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- source http://www.scnoob.com More templates http://www.scnoob.com/moban -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>精品商品推荐</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/user/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/user/img/icon.png">
+
+    <!-- Google font (font-family: 'Carrois Gothic', sans-serif;) -->
+    <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic" rel="stylesheet">
+    <!-- Google font (font-family: 'Open Sans', sans-serif;) -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="/user/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/user/css/plugins.css">
+
+    <!-- Style Css -->
+    <link rel="stylesheet" href="/user/css/style.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/user/css/custom.css">
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+
+<!-- Wrapper -->
+<div id="wrapper" class="wrapper">
+
+    <!-- Header -->
+    <!-- Header -->
+    <header class="header sticky-header">
+
+        <!-- Header Top Area -->
+        <div class="header-top-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <form action="#" class="header-top-left">
+                        </form>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <ul class="header-top-right">
+                            <li><a th:href="@{/user/myAccount}">个人中心</a></li>
+                            <li><a th:href="@{/user/toSingOut}">注销</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Header Top Area -->
+
+        <!-- Header Middle Area -->
+        <div class="header-middle-area cr-border cr-border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-12">
+                        <form class="header-search" th:action="@{/user/toFindProductsByKeyWords}" method="post">
+                            <select name="cateId">
+                                <option  value="1">跳蚤市场</option>
+                                <option  value="2">招聘</option>
+                                <option  value="3">汽车服务</option>
+                                <option  value="4">宠物</option>
+                                <option  value="5">房产</option>
+                                <option  value="6">家政服务</option>
+                                <option  value="7">装修建材</option>
+                                <option  value="8">商业服务</option>
+                                <option  value="9">二手车</option>
+                            </select>
+                            <input type="text" placeholder="搜索你感兴趣的" name="name">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-7 col-12">
+                        <div class="header-logo">
+                            <a href="index.html">
+                                <img src="/user/img/logo/logo-1.png" alt="logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-5 col-12">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+</div>
+</div>
+<!--// Header Middle Area -->
+<!-- Header Bottom Area -->
+<div class="header-bottom-area d-none d-lg-block">
+    <div class="container">
+        <div class="header-bottom-inner">
+            <nav class="sn-navigation">
+                <ul>
+                    <li><a th:href="@{/user/reIndex}">主页</a>
+                    </li>
+                    <li><a th:href="@{/user/toDisplayProductsByCateid}">跳蚤市场</a>
+                    </li>
+                    <li><a th:href="@{/user/toDisplayCates}">服务种类</a>
+                    </li>
+                    <li><a th:href="@{/user/FindProductsBycateId}">求职</a>
+                    </li>
+                    <li class="megamenu-active"><a th:href="@{/user/toDisplayCarService}">汽车服务</a>
+                    </li>
+                    <li class="megamenu-active"><a th:href="@{/user/toDisplayShoppingCar}">我的服务清单</a>
+                    </li>
+                    <li class="megamenu-active"><a th:href="@{/user/toPublish}">免费发布</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-bottom-social">
+            </div>
+        </div>
+    </div>
+</div>
+<!--// Header Bottom Area -->
+
+<!-- Header Mobile Menu -->
+<div class="mobile-menu-area d-block d-lg-none">
+    <div class="container">
+        <div class="mobile-menu clearfix">
+            <div class="header-bottom-social">
+                <span>Follow Us On:</span>
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--// Header Mobile Menu -->
+
+</header>
+<!--// Header -->
+
+<!-- Page Conttent -->
+<main class="page-content">
+
+    <!-- Product Page Wrapper -->
+    <div class="product-page-wrapper section-padding-bottom-md">
+        <div class="container">
+
+            <!-- Shop Breadcrumb -->
+            <div class="shop-breadcrumb">
+                <ul>
+                    <li><a th:href="@{/user/reIndex}">电商平台</a></li>
+                    <li><a href="#">精品商品推荐</a></li>
+                    <li><a href="#">商品细节</a></li>
+                    <li><a th:text="${product.name}" href="#"></a></li>
+                </ul>
+            </div>
+            <!--// Shop Breadcrumb -->
+
+            <!-- Poduct Details Wrapper -->
+            <div class="row">
+
+                <div class="col-lg-9 order-1 order-lg-2">
+
+                    <!-- Product Details Inner -->
+                    <div class="product-details">
+
+                        <!-- Product Details Left -->
+                        <div class="product-details-left">
+                            <div class="product-details-images slider-navigation-2">
+                                <a th:href="'/images/'+ ${product.image}">
+                                    <img th:src="'/images/'+ ${product.image}" alt="product image">
+                                </a>
+                                <a th:href="'/images/'+ ${product.image}">
+                                    <img th:src="'/images/'+ ${product.image}" alt="product image">
+                                </a>
+                                <a th:href="'/images/'+ ${product.image}">
+                                    <img th:src="'/images/'+ ${product.image}" alt="product image">
+                                </a>
+                                <a th:href="'/images/'+ ${product.image}">
+                                    <img th:src="'/images/'+ ${product.image}" alt="product image">
+                                </a>
+                            </div>
+                            <div class="product-details-thumbs slider-navigation-2">
+                                <img th:src="'/images/'+ ${product.image}" alt="product image thumb">
+                                <img th:src="'/images/'+ ${product.image}" alt="product image thumb">
+                                <img th:src="'/images/'+ ${product.image}" alt="product image thumb">
+                                <img th:src="'/images/'+ ${product.image}" alt="product image thumb">
+                            </div>
+                        </div>
+                        <!--// Product Details Left -->
+
+                        <!-- Product Details Right -->
+                        <div class="product-details-right">
+                            <h5 class="product-title" th:text="${product.name}"></h5>
+
+                            <div class="ratting-stock-availbility">
+                                <div class="ratting-box">
+                                    <span class="active"><i class="fa fa-star"></i></span>
+                                    <span class="active"><i class="fa fa-star"></i></span>
+                                    <span class="active"><i class="fa fa-star"></i></span>
+                                    <span class="active"><i class="fa fa-star"></i></span>
+                                    <span><i class="fa fa-star"></i></span>
+                                </div>
+                                <span class="stock-available">In stock</span>
+                            </div>
+
+                            <p>相信自己,欢迎投递简历。</p>
+
+                            <div class="price-box">
+                                <span class="pricebox-price">
+                                    <a th:text="${product.price}"></a><a>---</a>
+                                    <a th:text="${product.price}+5000"></a>
+                                </span>
+                            </div>
+
+                            <div class="product-details-quantity">
+                                <form th:action="@{/user/toVoteView(pid=${product.pid})}" method="post">
+                                    <a href="#" class="add-to-cart-button">
+                                        <button id="btn_1"  type="submit">投递简历</button>
+                                    </a>
+                                </form>
+                            </div>
+
+
+                            <div class="product-details-categories">
+                                <span>适用人群:</span>
+                                <ul>
+                                    <li><a href="#">应届生</a></li>
+                                    <li><a href="#">毕业生</a></li>
+                                    <li><a href="#">学历次要,能力优先</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="product-details-socialshare">
+                                <span>Share :</span>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--// Product Details Right -->
+
+                    </div>
+                    <!--// Product Details Inner -->
+                </div>
+                <div class="col-lg-3 order-2 order-lg-1">
+                    <div class="widgets">
+                        <div class="single-widget widget-related-product">
+                            <h5 class="widget-title">精品商品推荐</h5>
+                            <ul>
+                                <li th:each="productFour:${productsFour}">
+                                    <div class="product-item">
+                                        <div class="product-item-images">
+                                            <a th:href="@{/user/productDetail(pid=${productFour.pid})}" class="product-item-image-inner">
+                                                <img th:src="'/images/'+ ${productFour.image}" alt="product image">
+                                            </a>
+                                        </div>
+                                        <div class="product-item-content">
+                                            <div class="product-item-content-left">
+                                                <h5><a href="product-details-right-sidebar.html" th:text="${productFour.name}"></a></h5>
+                                                <div class="ratting-box">
+                                                    <span class="active"><i class="fa fa-star"></i></span>
+                                                    <span class="active"><i class="fa fa-star"></i></span>
+                                                    <span class="active"><i class="fa fa-star"></i></span>
+                                                    <span class="active"><i class="fa fa-star"></i></span>
+                                                    <span><i class="fa fa-star"></i></span>
+                                                </div>
+                                                <div class="price-box">
+                                                    <span class="pricebox-price" th:text="${productFour.price}"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--// Poduct Details Wrapper -->
+
+        </div>
+
+    </div>
+    <!--// Product Page Wrapper -->
+</main>
+<!-- Page Conttent -->
+<main class="page-content">
+    <!-- Features Area -->
+    <div class="features-area">
+        <div class="container">
+            <div class="row justify-content-center features-wrapper">
+
+                <!-- Single Features -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="features text-center">
+                        <h6>特价销售</h6>
+                        <p>特价电商营销凭借强大的用户产品优势，每天数十亿次搜索请求,以超低的价格俘虏人心,用心做买卖。 </p>
+                    </div>
+                </div>
+                <!--// Single Features -->
+
+                <!-- Single Features -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="features text-center">
+                        <h6>大流量</h6>
+                        <p>超过1亿用户浏览信息流、800亿次定位服务请求，为客户提供全系列产品广告资源覆盖用户生活全场景。</p>
+                    </div>
+                </div>
+                <!--// Single Features -->
+
+                <!-- Single Features -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="features text-center">
+                        <h6>品质保证</h6>
+                        <p>长期在我们平台购物的老客户都知道,我们客服人美声甜,商品品质有保障，是你居家旅行必逛的品质生活源地。</p>
+                    </div>
+                </div>
+                <!--// Single Features -->
+
+            </div>
+        </div>
+    </div>
+    <!--// Features Area -->
+
+    <!-- Newsletter & Brand Logos Area -->
+    <div class="newsletter-brandlogo-area section-padding-xs">
+        <div class="container">
+            <div class="row no-gutters align-items-center">
+
+                <!-- Newsletter -->
+                <div class="col-lg-4">
+                    <div class="newsletterbox">
+                        <h5>SIGN UP FOR OUR WEEKLY NEWSLETTER !</h5>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                <!--// Newsletter -->
+
+                <!-- Brand Logo -->
+                <div class="col-lg-8">
+                    <div class="brand-logos slider-navigation-2">
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-1.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-2.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-3.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-4.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-2.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="/user/img/brand-logos/brand-logo-3.jpg" alt="best brand logo">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--// Brand Logo -->
+
+            </div>
+        </div>
+    </div>
+    <!--// Newsletter & Brand Logos Area -->
+
+</main>
+<!--// Page Conttent -->
+
+<!-- Footer Area -->
+<footer class="footer-area bg-black section-padding-sm">
+
+    <!-- Footer Top Area -->
+    <div class="footer-top-area">
+        <div class="container">
+            <div class="row widgets footer-widgets">
+            </div>
+        </div>
+    </div>
+    <!--// Footer Top Area -->
+</footer>
+<!--// Footer Area -->
+<!--// Wrapper -->
+<!-- Js Files -->
+<script src="/user/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="/user/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="/user/js/popper.min.js"></script>
+<script src="/user/js/bootstrap.min.js"></script>
+<script src="/user/js/plugins.js"></script>
+<script src="/user/js/main.js"></script>
+</body>
+
+
+<!-- source http://www.scnoob.com More templates http://www.scnoob.com/moban -->
+</html>

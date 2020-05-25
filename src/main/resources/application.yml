@@ -1,0 +1,62 @@
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
+    servlet:
+      content-type: text/html
+  datasource:
+    url: jdbc:mysql://localhost:3306/52city?serverTimezone=GMT&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 888666
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis: #配置redis连接信息
+    database: 0 #编号为0的数据库
+    host: 127.0.0.1
+    port: 6379
+    timeout: 1000
+server:
+  port: 8080
+mybatis:
+  mapper-locations: classpath:dao/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+Appenders:
+  Console:  #输出到控制台
+    name: CONSOLE #Appender命名
+    target: SYSTEM_OUT
+    PatternLayout:
+      pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n"
+  RollingFile: # 输出到文件，超过256MB归档
+    - name: ROLLING_FILE
+      ignoreExceptions: false
+      fileName: /springboot/logs/springboot.log
+      filePattern: "/springboot/logs/$${date:yyyy-MM}/springboot -%d{yyyy-MM-dd}-%i.log.gz"
+      PatternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n"
+      Policies:
+        SizeBasedTriggeringPolicy:
+          size: "256 MB"
+      DefaultRolloverStrategy:
+        max: 1000
+Loggers:
+  Root:
+    level: info
+    AppenderRef:
+      - ref: CONSOLE
+  Logger: #单独设置某些包的输出级别
+    - name: com.cqupt.job.dao #复数加上-
+      additivity: false #去除重复的log
+      level: trace
+      AppenderRef:
+        - ref: CONSOLE #复数加上-
+        - ref: ROLLING_FILE #复数加上-
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+

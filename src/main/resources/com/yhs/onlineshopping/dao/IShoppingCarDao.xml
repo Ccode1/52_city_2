@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace：命名空间，用于隔离sql，还有一个很重要的作用，后面会讲 -->
+<mapper namespace="com.yhs.onlineshopping.dao.IShoppingCarDao">
+
+<!--添加购物车-->
+    <insert id="toAddShoppingCar" parameterType="com.yhs.onlineshopping.pojo.ShoppingCar">
+    	insert into 52city.shoppingCar (uid,name,image,price,count,address,phone)
+    	values (#{uid},#{name},#{image},#{price},#{count},#{address},#{phone});
+    </insert>
+
+<!--查看用户购物车-->
+    <select id="toFindShoppingCarByUid" resultType="com.yhs.onlineshopping.pojo.ShoppingCar" parameterType="int">
+		select * from 52city.shoppingCar where uid = #{uid};
+	</select>
+
+    <!-- 删除购物车 -->
+    <delete id="toDeleteShoppingCarByCid" parameterType="int">
+		delete from 52city.shoppingCar where cid= #{cid};
+	</delete>
+<!--购买商品-->
+	<insert id="toBuyProduct" parameterType="com.yhs.onlineshopping.pojo.Order">
+		insert into 52city.order (uid,name,image,price,address,count,phone)
+		values (#{uid},#{name},#{image},#{price},#{address},#{count},#{phone});
+	</insert>
+<!--根据cid查询该条信息-->
+	<select id="toFindShoppingByCid" parameterType="int" resultType="com.yhs.onlineshopping.pojo.ShoppingCar">
+		select * from 52city.shoppingCar where cid = #{cid};
+	</select>
+	<!--根据商品名查看用户购物车是否存在该商品-->
+	<select id="toFindShoppingByName" resultType="Integer" parameterType="String">
+		select cid from 52city.shoppingCar where name = #{name};
+	</select>
+<!--修改购物车商品的数量-->
+	<update id="toAlterCount" parameterType="com.yhs.onlineshopping.pojo.ShoppingCar">
+		update 52city.shoppingcar set count = #{count} where cid = #{cid};
+	</update>
+</mapper>
